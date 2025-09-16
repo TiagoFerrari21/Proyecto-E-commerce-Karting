@@ -1,0 +1,32 @@
+.nav-header{
+    height: 100px;
+    display: flex;
+    align-items: center;
+    background-color: #ff4141;
+    justify-content: center;
+    border-radius: 8px 8px 0 0;
+
+}
+
+.pfp img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: 0 4px 16px 0 #f10505;
+    border: 2px solid #000;
+    object-fit: cover;
+}
+
+.fondo-inicio img {
+    width: 100%;
+    height: auto;
+    max-height: 900px; /* Ajusta este valor según tus necesidades */
+    object-fit: cover;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 4px 16px 0 #f10505, 0 2px 4px 0 #0002;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
