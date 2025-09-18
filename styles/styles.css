@@ -53,16 +53,20 @@ nav {
 }
 
 .cart {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
     cursor: pointer;
     transition: fill 0.2s;
+    box-shadow: 0px 0px 6px #000000;
+    border: 2px solid #000;
 }
 
 .cart-img {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     object-fit: contain;
+    border-radius: 50%;
 }
 
 nav a {
@@ -79,6 +83,10 @@ nav a {
 }
 
 nav a:hover {
+    background: #d12c2c;
+}
+
+.nav-bounds a:hover {
     background: #d12c2c;
 }
 
