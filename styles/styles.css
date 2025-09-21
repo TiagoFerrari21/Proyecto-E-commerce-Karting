@@ -124,6 +124,14 @@ nav a {
     padding: 10px;
 }
 
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    flex-grow: 1;
+    padding: 10px;
+}
+
 .page-content {
     display: flex;
     text-decoration: none;
