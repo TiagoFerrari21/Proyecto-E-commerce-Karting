@@ -1,0 +1,104 @@
+@font-face {
+    font-family: 'Ferrari Sans';
+    src: url('Ferrari-SansMedium.eot');
+    src: local('Ferrari Sans Medium'), local('Ferrari-SansMedium'),
+        url('Ferrari-SansMedium.eot?#iefix') format('embedded-opentype'),
+        url('Ferrari-SansMedium.woff2') format('woff2'),
+        url('Ferrari-SansMedium.woff') format('woff'),
+        url('Ferrari-SansMedium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ferrari Sans';
+    src: url('Ferrari-SansRegular.eot');
+    src: local('Ferrari Sans Regular'), local('Ferrari-SansRegular'),
+        url('Ferrari-SansRegular.eot?#iefix') format('embedded-opentype'),
+        url('Ferrari-SansRegular.woff2') format('woff2'),
+        url('Ferrari-SansRegular.woff') format('woff'),
+        url('Ferrari-SansRegular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ferrari Sans';
+    src: url('Ferrari-SansRegularItalic.eot');
+    src: local('Ferrari Sans Regular Italic'), local('Ferrari-SansRegularItalic'),
+        url('Ferrari-SansRegularItalic.eot?#iefix') format('embedded-opentype'),
+        url('Ferrari-SansRegularItalic.woff2') format('woff2'),
+        url('Ferrari-SansRegularItalic.woff') format('woff'),
+        url('Ferrari-SansRegularItalic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ferrari Sans';
+    src: url('Ferrari-SansMediumItalic.eot');
+    src: local('Ferrari Sans Medium Italic'), local('Ferrari-SansMediumItalic'),
+        url('Ferrari-SansMediumItalic.eot?#iefix') format('embedded-opentype'),
+        url('Ferrari-SansMediumItalic.woff2') format('woff2'),
+        url('Ferrari-SansMediumItalic.woff') format('woff'),
+        url('Ferrari-SansMediumItalic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ferrari Sans';
+    src: url('Ferrari-SansBoldItalic.eot');
+    src: local('Ferrari Sans Bold Italic'), local('Ferrari-SansBoldItalic'),
+        url('Ferrari-SansBoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('Ferrari-SansBoldItalic.woff2') format('woff2'),
+        url('Ferrari-SansBoldItalic.woff') format('woff'),
+        url('Ferrari-SansBoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ferrari Sans';
+    src: url('Ferrari-SansBold.eot');
+    src: local('Ferrari Sans Bold'), local('Ferrari-SansBold'),
+        url('Ferrari-SansBold.eot?#iefix') format('embedded-opentype'),
+        url('Ferrari-SansBold.woff2') format('woff2'),
+        url('Ferrari-SansBold.woff') format('woff'),
+        url('Ferrari-SansBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ferrari Sans';
+    src: url('Ferrari-SansLight.eot');
+    src: local('Ferrari Sans Light'), local('Ferrari-SansLight'),
+        url('Ferrari-SansLight.eot?#iefix') format('embedded-opentype'),
+        url('Ferrari-SansLight.woff2') format('woff2'),
+        url('Ferrari-SansLight.woff') format('woff'),
+        url('Ferrari-SansLight.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ferrari Sans';
+    src: url('Ferrari-SansLightItalic.eot');
+    src: local('Ferrari Sans Light Italic'), local('Ferrari-SansLightItalic'),
+        url('Ferrari-SansLightItalic.eot?#iefix') format('embedded-opentype'),
+        url('Ferrari-SansLightItalic.woff2') format('woff2'),
+        url('Ferrari-SansLightItalic.woff') format('woff'),
+        url('Ferrari-SansLightItalic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+

@@ -1,9 +1,19 @@
+@import url("Ferrari-sans/stylesheet.css");
+
+:root {
+    --font: "Ferrari-Sans";
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
 main {
     display: flex;
     flex-direction: column; /*row*/
     height: 100vh;
     width: 100%;
-
     border-radius: 0 0 8px 8px;
     box-shadow: 0 4px 16px 0 #f10505, 0 2px 4px 0 #0002;
     background-image:url("http://curva1kart.com.ar/noticias/wp-content/uploads/2024/09/IMG_9032-2048x1638.jpg");
@@ -11,32 +21,17 @@ main {
     background-position: center;
 }
 
+/* NAV */
 .nav-header{
     max-width: 100%;
     height: 100px;
     display: flex;
     align-items: center;
-    background-color: #ff4141;
+    background-color: #000000;
     justify-content: center;
     border-radius: 8px 8px 0 0;
     align-content: center;
 
-}
-
-.pfp img {
-    display: flex;
-    align-self: flex-start;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    box-shadow: 0px 0px 6px #000000;
-    border: 2px solid #000;
-    object-fit: cover;
-}
-
-body {
-    margin: 0;
-    padding: 0;
 }
 
 nav {
@@ -45,45 +40,74 @@ nav {
     gap: 40px;
 }
 
-.nav-bounds {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 80%;
-}
-
-.cart {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: fill 0.2s;
-    box-shadow: 0px 0px 6px #000000;
-    border: 2px solid #000;
-}
-
-.cart-img {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-    border-radius: 50%;
-}
 
 nav a {
     text-decoration: none;
     color: white;
     font-size: 20px;
-    font-weight: bold;
     border-radius: 15px;
     padding: 10px 20px;
     margin: 0 8px;
     box-shadow: #0002 0 2px 8px;
     transition: background 0.2s;
-
+    font-family: 'Ferrari Sans';
 }
 
-nav a:hover {
-    background: #d12c2c;
+.nav-bounds {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+/* */
+
+.pfp img {
+    display: flex;
+    align-self: flex-start;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 6px #000000;
+    border: 0px solid #000;
+    object-fit: cover;
+}
+
+.pfp-label {
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    color: #fff;
+    letter-spacing: 1px;
+    margin-top: 0px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: 'Ferrari Sans'
+}
+
+
+.cart {
+    display: flex;
+    flex-direction: column;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0px 0px 6px #000000;
+    border: 0px solid #000;
+    transition: fill 0.2s;
+}
+
+.cart-img {
+    display: flex;
+    align-self: flex-start;
+    width: 55x;
+    height: 55px;
+    object-fit: contain;
+    border-radius: 50%;
 }
 
 .nav-bounds a:hover {
@@ -97,6 +121,28 @@ nav a:hover {
     flex-grow: 1;
     padding: 10px;
 }
+
+.page-content {
+    display: flex;
+    text-decoration: none;
+    color: white;
+    max-width: 1200px;
+    margin: 40px auto;
+    background: #00000080; /* Fondo blanco semitransparente */
+    border-radius: 16px;
+    box-shadow: 0 2px 16px #0002;
+    padding: 32px 24px;
+    min-width: 65%
+}
+
+.product-item {
+    background-color: #000000;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+}
+
+
 
 @media (max-width: 768px) {
    
