@@ -9,6 +9,13 @@ a {
     text-decoration: none;
 }
 
+body {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: 'Ferrari Sans'
+}
+
 main {
     display: flex;
     flex-direction: column; /*row*/
@@ -37,7 +44,6 @@ main {
 nav {
     display: flex;
     align-items: center;
-    gap: 40px;
 }
 
 
@@ -59,59 +65,55 @@ nav a {
     justify-content: space-between;
     align-items: center;
 }
+
+.nav-bounds a:hover {
+    background: #442626;
+}
+
 /* */
 
+.pfp {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 0px solid #000;
+    text-align: center;
+}
+
 .pfp img {
-    display: flex;
-    align-self: flex-start;
     width: 60px;
     height: 60px;
     border-radius: 50%;
     box-shadow: 0px 0px 6px #000000;
     border: 0px solid #000;
-    object-fit: cover;
 }
-
-.pfp-label {
-    display: block;
-    text-align: center;
-    font-size: 12px;
-    color: #fff;
-    letter-spacing: 1px;
-    margin-top: 0px;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    font-family: 'Ferrari Sans'
-}
-
 
 .cart {
-    display: flex;
-    flex-direction: column;
     width: 55px;
     height: 55px;
     border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0px 0px 6px #000000;
     border: 0px solid #000;
-    transition: fill 0.2s;
 }
 
 .cart-img {
-    display: flex;
-    align-self: flex-start;
     width: 55x;
     height: 55px;
     object-fit: contain;
     border-radius: 50%;
 }
 
-.nav-bounds a:hover {
-    background: #d12c2c;
+
+.icon-label {
+    display: block;
+    text-align: center;
+    font-size: 10px;
+    color: #fff;
+    letter-spacing: 1px;
+    margin-top: 0px;
+}
+
+.link-icon {
+    border-radius: 50%;
 }
 
 .featured-container {
