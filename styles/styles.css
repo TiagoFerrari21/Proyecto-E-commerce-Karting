@@ -21,11 +21,23 @@ body {
 
 main {
     display: flex;
-    flex-direction: column; /*row*/
-    height: 100vh;
+    flex-direction: row; /*row*/
+    min-height: 100vh;
     width: 100%;
     border-radius: 0 0 8px 8px;
 
+}
+
+.page-content {
+    max-width: 1200px;
+    text-decoration: none;
+    color: white;
+    margin: 40px auto;
+    background: #00000080;
+    border-radius: 16px;
+    box-shadow: 0 2px 16px #0002;
+    padding: 32px 24px;
+    min-width: 65%
 }
 
 /* NAV */
@@ -73,6 +85,7 @@ nav a {
 
 /* */
 
+/* Header icons*/
 .pfp {
     width: 60px;
     height: 60px;
@@ -117,6 +130,10 @@ nav a {
     border-radius: 50%;
 }
 
+/*---------*/
+
+/* Seccion productos */
+
 .featured-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -125,34 +142,46 @@ nav a {
     padding: 10px;
 }
 
+.categorias-orden {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+
+/* containers seccion productos*/
 .products-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px;
-    flex-grow: 1;
     padding: 10px;
 }
 
-.page-content {
-    display: flex;
-    text-decoration: none;
-    color: white;
-    max-width: 1200px;
-    margin: 40px auto;
-    background: #00000080; /* Fondo blanco semitransparente */
-    border-radius: 16px;
-    box-shadow: 0 2px 16px #0002;
-    padding: 32px 24px;
-    min-width: 65%
-}
-
 .product-item {
-    background-color: #000000;
+    background: #3a343480;
     border-radius: 5px;
     padding: 10px;
     text-align: center;
 }
 
+.button-product {
+    background-color: #ffffff80;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+/**/
 
 
 @media (max-width: 768px) {
@@ -160,6 +189,6 @@ nav a {
 }
 
 
-@media(max-width: 480px) {
+@media(max-width: 430px) {
    
 }
