@@ -248,7 +248,9 @@ nav a {
 @media (max-width: 768px) {
     /* El contenedor superior ahora apilará sus elementos verticalmente */
     .product-detail-top {
+        display: flex;
         flex-direction: column;
+        align-items: center
     }
 
     /* Cada contenedor dentro de la fila ahora ocupará el 100% del ancho */
