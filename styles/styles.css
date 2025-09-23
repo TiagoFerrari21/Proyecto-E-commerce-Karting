@@ -181,7 +181,12 @@ nav a {
     transition: background 0.3s;
 }
 
-/**/
+.button-product:hover {
+    background-color: #442626;
+    color: white;
+}
+
+/* */
 
 
 @media (max-width: 768px) {
