@@ -189,6 +189,62 @@ nav a {
 /* */
 
 
+/*  pagina de productos */
+
+.product-detail {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background: #3a343480;
+    border-radius: 8px;
+}
+.product-image {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 16px #0002;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.product-info {
+    flex-grow: 1;
+    color: white;
+    gap: 20px;
+    padding: 20px;
+    background: #3d3c3c80;
+    border-radius: 8px;
+}
+
+.product-detail-top {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.precio-pagos {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    background: #3a343480;
+    border-radius: 8px;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: space-evenly;
+    align-items: baseline;
+}
+
+.precio-pagos button {
+    width: 100%;
+}
+
+
+/* */
+
 @media (max-width: 768px) {
    
 }
