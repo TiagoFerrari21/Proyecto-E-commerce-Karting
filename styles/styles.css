@@ -261,6 +261,13 @@ nav a {
 }
 
 
-@media(max-width: 430px) {
-   
+@media(max-width: 438px) {
+    .categorias-orden {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    nav {
+        display: none;
+    }
 }
