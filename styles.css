@@ -73,7 +73,6 @@ nav a {
 }
 
 .nav-bounds {
-    min-width: 65%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -133,6 +132,36 @@ nav a {
 
 /*---------*/
 
+/* Seccion Home */
+.home-hero {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #0000004d;
+    border-radius: 15px;
+    margin-bottom: 40px;
+}
+
+.home-hero h1 {
+    margin-top: 0;
+    font-size: 2.5em;
+}
+
+.home-hero p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.hero-btn {
+    font-size: 1.2em;
+    padding: 15px 30px;
+}
+
+.home-section h2 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
 /* Seccion productos */
 
 .featured-container {
@@ -145,25 +174,26 @@ nav a {
 
 .categorias-orden {
     width: 100%;
-    gap : 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Centramos los elementos */
     align-items: center;
     flex-direction: row;
     margin-bottom: 20px;
+    flex-wrap: wrap; /* Permitimos que los elementos pasen a la siguiente línea */
+    gap: 20px; /* Añadimos un espacio entre los elementos */
 }
+
 
 /* containers seccion productos*/
 
-/* dropdowns */
-
 .dropdown {
-    border-radius: 15px;
+    position: relative;
+    display: inline-block;
 }
 
 .dropdown-btn {
     border: none;
-    background-color: #8886864d;
+    background-color: rgba(0, 0, 0, 0.3); /* Fondo negro con 30% de opacidad */
     color: white;
     padding: 10px 20px;
     font-size: 16px;
@@ -181,7 +211,7 @@ nav a {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #000000a9;
+    background-color: #3a3434;
     min-width: 160px;
     z-index: 1;
     border-radius: 15px;
@@ -201,20 +231,16 @@ nav a {
 
 .dropdown:hover .dropdown-content {display: block;}
 
-/* dropdowns fin */
-
-
-/* search bar */
-
 .search-bar input[type="text"] {
-    width: 90%;
+    align-self: self-start;
+    width: 100%; /* Aumentamos el ancho */
     padding: 10px 15px;
     font-size: 16px;
     color: white;
-    background-color: #8886864d;
-    border: none; 
-    border-radius: 15px;
-    font-family: "Ferrari Sans";
+    background-color: #3a343480; /* Mismo fondo que los items de producto */
+    border: 1px solid #ffffff80; /* Un borde sutil */
+    border-radius: 5px;
+    font-family: var(--font);
     transition: all 0.3s ease;
 }
 
@@ -222,15 +248,10 @@ nav a {
     color: #ddd; /* Color más claro para el texto de ejemplo */
 }
 
-.search-input:focus {
+.search-bar input[type="text"]:focus {
     outline: none;
-    background-color: #442626;
-    border-radius: 15px;
-    box-shadow: 0 0 8px #442626;
+    border-color: white;
 }
-
-
-/* search bar fin */
 
 .products-container {
     display: grid;
@@ -245,12 +266,6 @@ nav a {
     padding: 10px;
     text-align: center;
 }
-
-.product-item:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s;
-}
-
 
 .button-product {
     background-color: #ffffff80;
@@ -358,3 +373,4 @@ nav a {
         display: none;
     }
 }
+
