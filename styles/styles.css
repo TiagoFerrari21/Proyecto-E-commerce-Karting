@@ -124,7 +124,7 @@ nav {
     font-size: 10px;
     color: #fff;
     letter-spacing: 1px;
-    margin-top: 0px;
+    margin-top: -5px;
 }
 
 .link-icon {
@@ -383,7 +383,6 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 20px;
     min-width: 65%;
     max-height: 60%;
 }
@@ -591,12 +590,17 @@ footer {
 
 
 /* header */
+.nav-header {
+    height: 80px;
+}
+
 .pfp {
      display: none;
 }
 
 .nav-bounds {
     width: 100%;
+    margin-top: -10px;
 }
 
 .main-nav {
