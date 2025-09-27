@@ -133,14 +133,33 @@ nav a {
 
 /*---------*/
 
+/* footer */
+
+footer {
+    background-color: #000000;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    border-radius: 0 0 8px 8px;
+    opacity: 0.7;
+}
+
+/* fin footer */
+
 /* Seccion productos */
 
 .featured-container {
+    width: 100%;;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
     flex-grow: 1;
     padding: 10px;
+}
+
+.featured-container div {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .categorias-orden {
