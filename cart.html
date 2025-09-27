@@ -47,11 +47,45 @@
 
         <div class="page-content">
 
-            <section class="featured-container">
-                <h1>Bienvenido a Kartodromo</h1>
-                <p>Tu tienda online de karts y accesorios</p>
-                <a href="productos.html" class="btn">Explorar Productos</a>
-            </section>  
+            <h1 class="cart-title">Mi Carrito</h1>
+
+            <section class="carrito">
+
+                <div class="cart-items">
+
+                    <!-- Ejemplo de item en el carrito --> 
+
+                    <div class="cart-item">
+                        <img src="./media/images/productos/casco-senna.webp" alt="Casco Senna" class="cart-item-image">
+                        <div class="cart-item-details">
+                            <h3>Casco Senna</h3>
+                            <p>Precio: $150.00</p>
+                        </div>
+
+                        <div class="cart-item-actions">
+
+                            <div class="quantity-controls">
+                                <button class="cantidad-btn">-</button>
+                                <span class="item-quantity">1</span>
+                                <button class="cantidad-btn">+</button>
+                            </div>
+
+                            <button class="remove-item">Eliminar</button>
+
+                        </div>
+                    </div>
+                    <!-- Aquí se agregarían más items dinámicamente -->
+                </div>
+
+                <div class="cart-summary">
+                    <h3>Total: $<span class="total-price">0.00</span></h3>
+                    <button class="checkout-button">Proceder al pago</button>
+                </div>
+
+            </section>
+
+                
+             
             
         </div>
         
