@@ -623,13 +623,17 @@ footer {
 
 @media(max-width: 640px) {
 
-    /* main */
+
+/* main */
+
 .page-content {
     padding: 3%;
 }
-    /* fin main */
 
-    /* Home Page */
+/* fin main */
+
+
+/* Home Page */
 
 .welcome-text h1 {
     font-family: "Ferrari Sans", sans-serif;
@@ -646,8 +650,8 @@ footer {
 .reserva-label {
     font-size: 18px;
 }
-    /* Home page fin */
 
+/* Home page fin */
 
 
 .categorias-orden {
@@ -658,6 +662,7 @@ footer {
 
 
 /* header */
+
 .nav-header {
     height: 80px;
 }
@@ -676,9 +681,7 @@ footer {
     display: none;
 }
 
-
-
-    /* Burger Menu Styles */
+/* Burger Menu Styles */
 
 .link-icon-pfp {
     display:none;
@@ -730,7 +733,25 @@ footer {
 }
 /* Fin Burger Menu */
 
-
-
 /* header fin */
+
+/* carrito */
+
+.carrito {
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-items {
+    width: 100%;
+}
+
+.cart-summary {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+}
+
+/* carrito fin */
+
 }
