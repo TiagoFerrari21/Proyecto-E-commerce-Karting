@@ -127,9 +127,15 @@ nav {
     margin-top: -5px;
 }
 
-.link-icon {
+.link-icon-profile, .link-icon-cart {
     border-radius: 50%;
 }
+
+/* Burger Menu */
+.burger-toggle, .burger-menu {
+    display: none; /* Oculto por defecto en desktop */
+}
+/* Fin Burger Menu */
 
 /*---------*/
 
@@ -306,7 +312,7 @@ footer {
 }
 
 .search-bar input[type="text"]::placeholder {
-    color: #ddd; /* Color más claro para el texto de ejemplo */
+    color: #ddd; 
 }
 
 .search-input:focus {
@@ -534,6 +540,68 @@ footer {
 
 /* fin carrito */
 
+/* Alquiler */
+
+.formulario-alquiler {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #3a343480;
+    border-radius: 16px;
+}
+
+.alquiler-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.alquiler-form input {
+    width: 90%;
+    padding: 10px 15px;
+    font-size: 16px;
+    color: white;
+    background-color: #8886864d;
+    border: none; 
+    border-radius: 15px;
+    font-family: "Ferrari Sans";
+    transition: all 0.3s ease;
+}
+
+.alquiler-form input[type="text"]::placeholder {
+    color: #ddd; /* Color más claro para el texto de ejemplo */
+}
+
+.alquiler-form input:focus {
+    outline: none;
+    border-radius: 15px;
+    box-shadow: 0 0 8px #442626;
+}
+
+.reserva-btn {
+    font-family: "Ferrari Sans";
+    background-color: #b60505;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 10px 2px;
+    cursor: pointer;
+    border-radius: 15px;
+    transition: background 0.3s;
+}
+
+.reserva-btn:hover {
+    background-color: #442626;
+    color: white;
+}
+
+
+/* fin alquiler */
 
 /* Media Queries */
 
@@ -601,15 +669,68 @@ footer {
 .nav-bounds {
     width: 100%;
     margin-top: -10px;
+    justify-content: space-between;
 }
 
 .main-nav {
     display: none;
 }
 
-.burguer-menu {
-    display: block;
+
+
+    /* Burger Menu Styles */
+
+.link-icon-pfp {
+    display:none;
 }
+
+.burger-menu {
+    display: flex; /* Mostrar en mobile */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    cursor: pointer;
+    z-index: 10;
+    margin-left: 10px;
+}
+
+.burger-menu span {
+    width: 32px;
+    height: 4px;
+    background: white;
+    border-radius: 15px;
+    transition: all 0.3s linear;
+}
+
+.burger-toggle {
+    display: none;
+}
+
+.main-nav {
+    width: 20vh;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+    justify-content: flex-start;
+    background: #000000e6;
+    height: 100vh;
+    padding: 32px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(-100%);
+    box-sizing: border-box;
+}
+
+.burger-toggle:checked + .burger-menu + .main-nav {
+    transform: translateX(0);
+}
+/* Fin Burger Menu */
+
+
 
 /* header fin */
 }
