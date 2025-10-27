@@ -749,6 +749,10 @@ footer {
     flex-direction: column;
 }
 
+.cart{
+    margin-right: 5px;
+}
+
 .cart-items {
     width: 100%;
 }
