@@ -340,6 +340,7 @@ footer {
     border-radius: 15px;
     padding: 10px;
     text-align: center;
+    justify-content: space-between;
 }
 
 .product-item:hover {
@@ -348,7 +349,7 @@ footer {
 }
 
 .product-card img {
-    width: 100px;
+    width: 80%;
     border-radius: 15px;
 }
 
