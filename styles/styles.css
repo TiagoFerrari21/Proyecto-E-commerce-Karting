@@ -21,6 +21,7 @@ body {
 
 main {
     display: flex;
+    justify-content: center;
     flex-direction: row; /*row*/
     min-height: 100vh;
     width: 100%;
@@ -37,7 +38,7 @@ main {
     border-radius: 16px;
     box-shadow: 0 2px 16px #0002;
     padding: 24px 24px;
-    min-width: 65%
+    min-width: 75%
 }
 
 /* NAV */
@@ -390,8 +391,8 @@ footer {
 .product-image {
     border-radius: 8px;
     box-shadow: 0 2px 16px #0002;
-    max-height: 70vh;
-    max-width: 100%;
+    max-height: 90%;
+    max-width: 80%;
 }
 
 .image-container {
@@ -400,6 +401,9 @@ footer {
     align-items: center;
     min-width: 65%;
     max-height: 60%;
+    background: #3d3c3c80;
+    border-radius: 5px;
+
 }
 
 .product-info {
@@ -463,6 +467,13 @@ footer {
     padding: 15px;
     border-radius: 15px;
     gap: 15px;
+}
+
+.item-link-details {
+    text-decoration: none; /* Quitar el subrayado típico del ancla */
+    color: inherit; /* Mantener el color de texto del padre */
+    flex-grow: 1;
+    
 }
 
 .cart-item-image {
@@ -660,6 +671,12 @@ footer {
 /* Media Queries */
 
 @media (max-width: 768px) {
+    .product-image {
+        border-radius: 8px;
+        box-shadow: 0 2px 16px #0002;
+        max-height: 70vh;
+        max-width: 100%;
+    }
     /* El contenedor superior ahora apilará sus elementos verticalmente */
     .product-detail-top {
         display: flex;
@@ -670,7 +687,6 @@ footer {
     /* Cada contenedor dentro de la fila ahora ocupará el 100% del ancho */
     .image-container, .precio-pagos {
         flex: none; /* Deshabilita el comportamiento flexible de 2/3 y 1/3 */
-        width: 100%; /* Asegura que cada contenedor ocupe todo el ancho disponible */
     }
 }
 
@@ -802,12 +818,17 @@ footer {
 
 .cart-items {
     width: 100%;
+    font-size: 12px;
+    h3 {
+        font-size: 15px;
+    }
 }
 
 .cart-summary {
     display: flex;
     flex-grow: 1;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 /* carrito fin */

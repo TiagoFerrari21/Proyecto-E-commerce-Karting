@@ -8,13 +8,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const categoryLinks = document.querySelectorAll('.category-product-filter');
 
   function updateCartCount() {
-    const cartItemsCount = JSON.parse(localStorage.getItem('cart'))?.length || 0;
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-    if (cartItemsCount > 0) {
-      const cartCountElement = document.getElementById('cart-count');
-      cartCountElement.innerText = cartItemsCount;
-      cartCountElement.style.display = 'block';
-    }
+  const totalItemsCount = cart.reduce((sum, item) => {
+        // Aseguramos que item.quantity sea un número, por si acaso
+        const quantity = Number(item.quantity) || 0; 
+        return Number(sum) + quantity; 
+    }, 0);
+
+  if (totalItemsCount > 0) {
+        const cartCountElement = document.getElementById('cart-count');
+        cartCountElement.innerText = totalItemsCount;
+        cartCountElement.style.display = 'block';
+      }
   }
   // airtable config
   const airtableToken = AIRTABLE_TOKEN;
@@ -123,27 +129,45 @@ inputSearch.addEventListener('keyup', (event) => {
 });
 
 function addtoCart(elemento, product){
+
   elemento.preventDefault();
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    cart.push(product);
-    localStorage.setItem('cart', JSON.stringify(cart));
-    const toastContainer = document.getElementById('toast-container');
-    const newToast = document.createElement('div');
-    newToast.id = 'toast-carrito'; 
-    newToast.innerHTML = `
-        ${ICON_CHECK || '✅'}
-        <div>${product.name} agregado al carrito</div>`;
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const existingProductIndex = cart.findIndex(item => item.id === product.id);
 
-    // 2. Añadir el Toast al DOM (lo mejor es al <body> o a un contenedor fijo)
-    toastContainer.appendChild(newToast);
-    newToast.style.display = 'flex';
+  
+
+  if (existingProductIndex > -1) {
+        // 2. Si existe (índice >= 0), incrementamos la cantidad
+        cart[existingProductIndex].quantity += 1;
+        
+        // El producto en el carrito debe tener la propiedad `quantity` inicializada.
+        // Si no la tiene, debemos asegurarnos de inicializarla en 1 si es la primera vez que se añade.
+    } else {
+        // 3. Si no existe, lo añadimos con cantidad inicial de 1.
+        // Usamos el spread operator ({...product}) para no modificar el objeto original `product`.
+        cart.push({ ...product, quantity: 1 });
+  }
+
+  localStorage.setItem('cart', JSON.stringify(cart));
+
+  // 1. Crear el Toast
+  const toastContainer = document.getElementById('toast-container');
+  const newToast = document.createElement('div');
+  newToast.id = 'toast-carrito'; 
+  newToast.innerHTML = `
+      ${ICON_CHECK || '✅'}
+      <div>${product.name} agregado al carrito</div>`;
+
+  // 2. Añadir el Toast al DOM (lo mejor es al <body> o a un contenedor fijo)
+  toastContainer.appendChild(newToast);
+  newToast.style.display = 'flex';
 
 
-    // 4. Ocultar el Toast después de unos segundos y eliminarlo del DOM
-    setTimeout(() => {
-        newToast.style.display = 'none';
-        setTimeout(() => {
-            document.toastContainer.removeChild(newToast);
-        }, 3000); 
-    }, 3000);
+  // 4. Ocultar el Toast después de unos segundos y eliminarlo del DOM
+  setTimeout(() => {
+      newToast.style.display = 'none';
+      setTimeout(() => {
+          document.toastContainer.removeChild(newToast);
+      }, 3000); 
+  }, 3000);
 }

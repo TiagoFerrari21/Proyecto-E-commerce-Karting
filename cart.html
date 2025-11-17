@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 
-<script src="./app.js"></script>
+<script src="./general.js"></script>
+<script src="./cart.js"></script>
 
 <body>
     <header class = "nav-header">
@@ -35,7 +36,7 @@
 
             <a class= "link-icon-cart" href="cart.html">
                 <div class ="cart">
-
+                    <span id ="cart-count" class="cart-count">0</span>
                     <img src="./media/images/cart-transparent-white2.png" class="cart-img">
                     <span class="icon-label">Carrito</span>
 
@@ -53,11 +54,11 @@
 
             <section class="carrito">
 
-                <div class="cart-items">
+                <div id= "cart-items" class="cart-items">
 
                     <!-- Ejemplo de item en el carrito --> 
 
-                    <div class="cart-item">
+                    <!-- <div class="cart-item">
                         <img src="./media/images/productos/casco-senna.webp" alt="Casco Senna" class="cart-item-image">
                         <div class="cart-item-details">
                             <h3>Casco Senna</h3>
@@ -75,7 +76,7 @@
                             <button class="remove-item">Eliminar</button>
 
                         </div>
-                    </div>
+                    </div> -->
                     <!-- Aquí se agregarían más items dinámicamente -->
                 </div>
 
