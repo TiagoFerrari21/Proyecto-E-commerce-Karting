@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kartodromo</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<script type="module" src="./profile.js"></script>
+
+
+<body>
+    <header class="nav-header">
+        <div class="nav-bounds">
+
+            <a class="link-icon-pfp" href="profile.html">
+                <div class="pfp">
+
+                    <img src="./media/images/nopfp3.png">
+                    <span class="icon-label">Perfil</span>
+
+                </div>
+            </a>
+
+            <input type="checkbox" id="burger-toggle" class="burger-toggle">
+            <label for="burger-toggle" class="burger-menu"><span></span><span></span><span></span></label>
+
+            <nav class="main-nav">
+
+                <a href="index.html">HOME</a>
+                <a href="alquiler.html">ALQUILER</a>
+                <a href="productos.html">PRODUCTOS</a>
+
+            </nav>
+
+            <a class="link-icon-cart" href="cart.html">
+                <div class="cart">
+                    <img src="./media/images/cart-transparent-white2.png" class="cart-img">
+                    <span id="cart-count" class="cart-count">0</span>
+                    <span class="icon-label">Carrito</span>
+                </div>
+            </a>
+        </div>
+    </header>
+
+
+    <main>
+        <div class="page-content">
+            <section class="categorias-orden">
+
+                <div id="input-search-products" class="search-bar">
+                    <input id="input-search-products" class="search-input" type="text" placeholder="Buscar...">
+                </div>
+
+                <div class="add-product-container">
+                    <button id="toggle-form-button">Agregar Producto</button>
+                    <form id="add-product-form" class="hidden">
+                        <label for="product-name">Nombre del producto:</label>
+                        <input type="text" id="product-name" name="product-name" required>
+
+                        <label for="product-price">Precio:</label>
+                        <input type="number" id="product-price" name="product-price" required>
+
+                        <label for="product-category">Categoría:</label>
+                        <input type="text" id="product-category" name="product-category" required>
+
+                        <label for="product-img">URL de la imagen:</label>
+                        <input type="url" id="product-img" name="product-img" required>
+
+                        <label for="product-stock">Stock:</label>
+                        <input type="number" id="product-stock" name="product-stock" required>
+
+                        <label for="product-detail">Descripción:</label>
+                        <textarea id="product-detail" name="product-detail" required></textarea>
+
+                        <button type="submit" id="add-product-button">Agregar Producto</button>
+                    </form>
+                </div>
+
+            </section>
+
+            <section class="products-container">
+
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <footer>
+
+        <p>&copy; 2024 Kartodromo. Todos los derechos reservados.</p>
+
+    </footer>
+    <div id="toast-container">
+
+    </div>
+
+
+</body>
+
+
+</html>

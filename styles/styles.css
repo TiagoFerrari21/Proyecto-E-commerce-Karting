@@ -14,7 +14,7 @@ body {
     padding: 0;
     text-decoration: none;
     font-family: 'Ferrari Sans';
-    background-image:url("http://curva1kart.com.ar/noticias/wp-content/uploads/2024/09/IMG_9032-2048x1638.jpg");
+    background-image: url("http://curva1kart.com.ar/noticias/wp-content/uploads/2024/09/IMG_9032-2048x1638.jpg");
     background-size: cover;
     background-position: center;
 }
@@ -22,7 +22,8 @@ body {
 main {
     display: flex;
     justify-content: center;
-    flex-direction: row; /*row*/
+    flex-direction: row;
+    /*row*/
     min-height: 100vh;
     width: 100%;
     border-radius: 0 0 8px 8px;
@@ -42,7 +43,7 @@ main {
 }
 
 /* NAV */
-.nav-header{
+.nav-header {
     max-width: 100%;
     height: 100px;
     display: flex;
@@ -129,14 +130,18 @@ nav {
     margin-top: -5px;
 }
 
-.link-icon-pfp, .link-icon-cart {
+.link-icon-pfp,
+.link-icon-cart {
     border-radius: 50%;
 }
 
 /* Burger Menu */
-.burger-toggle, .burger-menu {
-    display: none; /* Oculto por defecto en desktop */
+.burger-toggle,
+.burger-menu {
+    display: none;
+    /* Oculto por defecto en desktop */
 }
+
 /* Fin Burger Menu */
 
 /*---------*/
@@ -214,7 +219,7 @@ footer {
     font-size: 30px;
     font-weight: bold;
     color: white;
-    background-color: #b60505; 
+    background-color: #b60505;
     padding: 15px 30px;
     border-radius: 10px;
     transition: transform 0.2s ease, background-color 0.2s ease;
@@ -223,7 +228,8 @@ footer {
 }
 
 .featured-container {
-    width: 100%;;
+    width: 100%;
+    ;
     display: grid;
     gap: 20px;
     flex-grow: 1;
@@ -241,7 +247,7 @@ footer {
 /* containers seccion productos*/
 .categorias-orden {
     width: 100%;
-    gap : 20px;
+    gap: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -294,7 +300,9 @@ footer {
     border-radius: 15px;
 }
 
-.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
 
 /* dropdowns fin */
 
@@ -307,14 +315,14 @@ footer {
     font-size: 16px;
     color: white;
     background-color: #8886864d;
-    border: none; 
+    border: none;
     border-radius: 15px;
     font-family: "Ferrari Sans";
     transition: all 0.3s ease;
 }
 
 .search-bar input[type="text"]::placeholder {
-    color: #ddd; 
+    color: #ddd;
 }
 
 .search-input:focus {
@@ -356,7 +364,7 @@ footer {
 }
 
 .button-product {
-    background-color: #ffffff80;
+    background-color: #b6050580;
     color: white;
     font-weight: bold;
     border: none;
@@ -388,6 +396,7 @@ footer {
     background: #3a343480;
     border-radius: 8px;
 }
+
 .product-image {
     border-radius: 8px;
     box-shadow: 0 2px 16px #0002;
@@ -437,6 +446,10 @@ footer {
     width: 100%;
 }
 
+.product-description {
+    word-wrap: break-word;
+}
+
 
 /* */
 
@@ -470,10 +483,12 @@ footer {
 }
 
 .item-link-details {
-    text-decoration: none; /* Quitar el subrayado típico del ancla */
-    color: inherit; /* Mantener el color de texto del padre */
+    text-decoration: none;
+    /* Quitar el subrayado típico del ancla */
+    color: inherit;
+    /* Mantener el color de texto del padre */
     flex-grow: 1;
-    
+
 }
 
 .cart-item-image {
@@ -511,7 +526,8 @@ footer {
     gap: 10px;
 }
 
-.cantidad-btn, .remove-item {
+.cantidad-btn,
+.remove-item {
     background-color: #555;
     color: white;
     border: none;
@@ -527,7 +543,8 @@ footer {
     margin-top: 35px;
 }
 
-.cantidad-btn:hover, .remove-item:hover {
+.cantidad-btn:hover,
+.remove-item:hover {
     background-color: #442626;
 }
 
@@ -567,11 +584,14 @@ footer {
 
     /* Configuración de Flexbox para apilar */
     display: flex;
-    flex-direction: column-reverse; /* ¡CLAVE! Esto hace que los nuevos toasts (añadidos al final) aparezcan arriba */
-    gap: 10px; /* Espacio vertical entre cada toast */
-    
+    flex-direction: column-reverse;
+    /* ¡CLAVE! Esto hace que los nuevos toasts (añadidos al final) aparezcan arriba */
+    gap: 10px;
+    /* Espacio vertical entre cada toast */
+
     /* Evita que el contenedor ocupe todo el ancho */
-    align-items: flex-end; /* Asegura que los toasts se alineen a la derecha */
+    align-items: flex-end;
+    /* Asegura que los toasts se alineen a la derecha */
 }
 
 #toast-carrito {
@@ -585,7 +605,7 @@ footer {
     transition: opacity 0.5s, visibility 0.5s;
     z-index: 1000;
     display: none;
-    
+
 }
 
 #cart-count {
@@ -628,14 +648,15 @@ footer {
     font-size: 16px;
     color: white;
     background-color: #8886864d;
-    border: none; 
+    border: none;
     border-radius: 15px;
     font-family: "Ferrari Sans";
     transition: all 0.3s ease;
 }
 
 .alquiler-form input[type="text"]::placeholder {
-    color: #ddd; /* Color más claro para el texto de ejemplo */
+    color: #ddd;
+    /* Color más claro para el texto de ejemplo */
 }
 
 .alquiler-form input:focus {
@@ -664,9 +685,98 @@ footer {
     color: white;
 }
 
-
-
 /* fin alquiler */
+
+
+
+/* Formulario agregar producto a airtable*/
+
+
+.add-product-container {
+    max-width: 500px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+    color: white;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+}
+
+.add-product-container button {
+    background-color: #b60505;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.add-product-container button:hover {
+    background-color: #d12c2c;
+}
+
+#add-product-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    /* Asegura que quede sobre los demás elementos */
+    background: rgba(0, 0, 0, 0.9);
+    /* Fondo oscuro */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    min-width: 70%;
+    max-width: 70%;
+    color: white;
+    gap: 10px;
+
+    input {
+        width: 90%;
+        padding: 10px 15px;
+        font-size: 16px;
+        color: white;
+        background-color: #8886864d;
+        border: none;
+        border-radius: 15px;
+        font-family: "Ferrari Sans";
+        transition: all 0.3s ease
+    }
+
+    input:focus {
+        outline: none;
+        border-radius: 15px;
+        box-shadow: 0 0 8px #442626;
+    }
+
+    textarea {
+        width: inherit;
+        padding: 10px 15px;
+        font-size: 16px;
+        color: white;
+        background-color: #8886864d;
+        border: none;
+        border-radius: 15px;
+        font-family: "Ferrari Sans";
+        transition: all 0.3s ease
+    }
+
+    textarea:focus {
+        outline: none;
+        border-radius: 15px;
+        box-shadow: 0 0 8px #442626;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+/* Fin Formulario agregar producto */
+
+
+
 
 /* Media Queries */
 
@@ -677,6 +787,7 @@ footer {
         max-height: 70vh;
         max-width: 100%;
     }
+
     /* El contenedor superior ahora apilará sus elementos verticalmente */
     .product-detail-top {
         display: flex;
@@ -685,152 +796,182 @@ footer {
     }
 
     /* Cada contenedor dentro de la fila ahora ocupará el 100% del ancho */
-    .image-container, .precio-pagos {
-        flex: none; /* Deshabilita el comportamiento flexible de 2/3 y 1/3 */
+    .image-container,
+    .precio-pagos {
+        flex: none;
+        /* Deshabilita el comportamiento flexible de 2/3 y 1/3 */
     }
 }
+
+/* eliminar pagina */
+
+.button-eliminar {
+    background-color: #b60505;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.button-eliminar:hover {
+    background-color: #442626;
+    color: white;
+}
+
+
 
 
 @media(max-width: 640px) {
 
 
-/* main */
+    /* main */
 
-.page-content {
-    padding: 3%;
-}
-
-/* fin main */
-
-
-/* Home Page */
-
-.welcome-text h1 {
-    font-family: "Ferrari Sans", sans-serif;
-    font-size: 13px;
-    text-shadow: 3px 3px 10px #000000;
-    letter-spacing: 2px;
-    margin-bottom: 0px;
-}
-
-.alquiler-label {
-    font-size: 17px;
-}
-
-.reserva-label {
-    font-size: 18px;
-}
-
-/* Home page fin */
-
-
-.categorias-orden {
-    flex-direction: column;
-     gap: 20px;
-}
-
-
-
-/* header */
-
-.nav-header {
-    height: 80px;
-}
-
-.pfp {
-     display: none;
-}
-
-.nav-bounds {
-    width: 100%;
-    margin-top: -10px;
-    justify-content: space-between;
-}
-
-.main-nav {
-    display: none;
-}
-
-/* Burger Menu Styles */
-
-.link-icon-pfp {
-    display:none;
-}
-
-.burger-menu {
-    display: flex; /* Mostrar en mobile */
-    flex-direction: column;
-    justify-content: space-around;
-    width: 32px;
-    height: 32px;
-    background: transparent;
-    cursor: pointer;
-    z-index: 10;
-    margin-left: 10px;
-}
-
-.burger-menu span {
-    width: 32px;
-    height: 4px;
-    background: white;
-    border-radius: 15px;
-    transition: all 0.3s linear;
-}
-
-.burger-toggle {
-    display: none;
-}
-
-.main-nav {
-    width: 20vh;
-    display: flex;
-    flex-direction: column;
-    margin-top: 10%;
-    justify-content: flex-start;
-    background: #000000e6;
-    height: 100vh;
-    padding: 32px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: transform 0.3s ease-in-out;
-    transform: translateX(-100%);
-    box-sizing: border-box;
-}
-
-.burger-toggle:checked + .burger-menu + .main-nav {
-    transform: translateX(0);
-}
-/* Fin Burger Menu */
-
-/* header fin */
-
-/* carrito */
-
-.carrito {
-    display: flex;
-    flex-direction: column;
-}
-
-.cart{
-    margin-right: 5px;
-}
-
-.cart-items {
-    width: 100%;
-    font-size: 12px;
-    h3 {
-        font-size: 15px;
+    .page-content {
+        padding: 3%;
     }
-}
 
-.cart-summary {
-    display: flex;
-    flex-grow: 1;
-    align-items: center;
-    flex-wrap: wrap;
-}
+    /* fin main */
 
-/* carrito fin */
+
+    /* Home Page */
+
+    .welcome-text h1 {
+        font-family: "Ferrari Sans", sans-serif;
+        font-size: 13px;
+        text-shadow: 3px 3px 10px #000000;
+        letter-spacing: 2px;
+        margin-bottom: 0px;
+    }
+
+    .alquiler-label {
+        font-size: 17px;
+    }
+
+    .reserva-label {
+        font-size: 18px;
+    }
+
+    /* Home page fin */
+
+
+    .categorias-orden {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+
+
+    /* header */
+
+    .nav-header {
+        height: 80px;
+    }
+
+    .pfp {
+        display: none;
+    }
+
+    .nav-bounds {
+        width: 100%;
+        margin-top: -10px;
+        justify-content: space-between;
+    }
+
+    .main-nav {
+        display: none;
+    }
+
+    /* Burger Menu Styles */
+
+    .link-icon-pfp {
+        display: none;
+    }
+
+    .burger-menu {
+        display: flex;
+        /* Mostrar en mobile */
+        flex-direction: column;
+        justify-content: space-around;
+        width: 32px;
+        height: 32px;
+        background: transparent;
+        cursor: pointer;
+        z-index: 10;
+        margin-left: 10px;
+    }
+
+    .burger-menu span {
+        width: 32px;
+        height: 4px;
+        background: white;
+        border-radius: 15px;
+        transition: all 0.3s linear;
+    }
+
+    .burger-toggle {
+        display: none;
+    }
+
+    .main-nav {
+        width: 20vh;
+        display: flex;
+        flex-direction: column;
+        margin-top: 10%;
+        justify-content: flex-start;
+        background: #000000e6;
+        height: 100vh;
+        padding: 32px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: transform 0.3s ease-in-out;
+        transform: translateX(-100%);
+        box-sizing: border-box;
+    }
+
+    .burger-toggle:checked+.burger-menu+.main-nav {
+        transform: translateX(0);
+    }
+
+    /* Fin Burger Menu */
+
+    /* header fin */
+
+    /* carrito */
+
+    .carrito {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cart {
+        margin-right: 5px;
+    }
+
+    .cart-items {
+        width: 100%;
+        font-size: 12px;
+
+        h3 {
+            font-size: 15px;
+        }
+    }
+
+    .cart-summary {
+        display: flex;
+        flex-grow: 1;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    /* carrito fin */
 
 }

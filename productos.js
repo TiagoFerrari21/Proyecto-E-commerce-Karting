@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const currentFilters = { text: '', category: '' };
 
   // eventos
-inputSearch.addEventListener('keyup', (event) => {
+  inputSearch.addEventListener('keyup', (event) => {
     currentFilters.text = event.target.value.toLowerCase();
     renderProducts(filterProducts());
   });
@@ -128,7 +128,7 @@ inputSearch.addEventListener('keyup', (event) => {
   updateCartCount();
 });
 
-function addtoCart(elemento, product){
+  function addtoCart(elemento, product){
 
   elemento.preventDefault();
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
