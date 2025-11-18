@@ -594,10 +594,24 @@ footer {
     /* Asegura que los toasts se alineen a la derecha */
 }
 
-#toast-carrito {
+#toast-exito {
     align-items: center;
     gap: 4px;
     background-color: #3a9101;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    transition: opacity 0.5s, visibility 0.5s;
+    z-index: 1000;
+    display: none;
+
+}
+
+#toast-error {
+    align-items: center;
+    gap: 4px;
+    background-color: #b60505;
     color: white;
     padding: 5px 10px;
     border-radius: 8px;

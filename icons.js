@@ -33,3 +33,7 @@ export const ICON_CART = `
         <path d="M16 14l1 3" />
         </svg>
 `;
+
+export const ICON_ERROR = `<SVG width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2L1 21H23L12 2ZM13 17H11V15H13V17ZM13 13H11V9H13V13Z" fill="#FFC107"/>
+</svg> `;

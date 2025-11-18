@@ -1,5 +1,6 @@
 import { AIRTABLE_TOKEN, AIRTABLE_BASE_ID, AIRTABLE_TABLE_NAME } from './env.js';
 import { ICON_CHECK, ICON_CART } from './icons.js';
+import { toast, toastError } from './general.js';
 
 
 
@@ -37,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             await addProductToAirtable(product);
-            alert('Producto agregado exitosamente.');
+            toast('Producto agregado exitosamente.');
             addProductForm.reset(); // Limpiar el formulario
             addProductForm.style.display = 'none'; // Ocultar el formulario después de agregar
             toggleFormButton.innerText = 'Agregar Producto'; // Cambiar el texto del botón
@@ -214,6 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 console.log('Producto eliminado:', productId);
+                toastError('Producto eliminado exitosamente.');
                 // Actualiza la lista de productos después de eliminar
                 getProductsFromAirtable();
             } else {

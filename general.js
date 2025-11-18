@@ -1,3 +1,5 @@
+import { ICON_CHECK, ICON_ERROR} from './icons.js';
+
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -32,3 +34,41 @@ function updateCartCount() {
         cartCountElement.style.display = totalItemsCount > 0 ? 'block' : 'none';
     }
 }
+
+export function toast(mensaje) {
+        const toastContainer = document.getElementById('toast-container');
+        const newToast = document.createElement('div');
+        newToast.id = 'toast-exito'; 
+        newToast.innerHTML = `
+            ${ICON_CHECK || '✅'}
+            <div>${mensaje}</div>`;
+    
+        toastContainer.appendChild(newToast);
+        newToast.style.display = 'flex';
+
+        setTimeout(() => {
+          newToast.style.display = 'none';
+          setTimeout(() => {
+              document.toastContainer.removeChild(newToast);
+          }, 3000); 
+      }, 3000);
+    }
+
+export function toastError(mensaje) {
+        const toastContainer = document.getElementById('toast-container');
+        const newToast = document.createElement('div');
+        newToast.id = 'toast-error'; 
+        newToast.innerHTML = `
+            ${ICON_ERROR || '✅'}
+            <div>${mensaje}</div>`;
+    
+        toastContainer.appendChild(newToast);
+        newToast.style.display = 'flex';
+
+        setTimeout(() => {
+          newToast.style.display = 'none';
+          setTimeout(() => {
+              document.toastContainer.removeChild(newToast);
+          }, 3000); 
+      }, 3000);
+    }

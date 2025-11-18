@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCartCount();
 });
 
-  function addtoCart(elemento, product){
+function addtoCart(elemento, product){
 
   elemento.preventDefault();
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 1. Crear el Toast
   const toastContainer = document.getElementById('toast-container');
   const newToast = document.createElement('div');
-  newToast.id = 'toast-carrito'; 
+  newToast.id = 'toast-exito'; 
   newToast.innerHTML = `
       ${ICON_CHECK || '✅'}
       <div>${product.name} agregado al carrito</div>`;

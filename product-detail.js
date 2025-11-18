@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // 1. Crear el Toast
       const toastContainer = document.getElementById('toast-container');
       const newToast = document.createElement('div');
-      newToast.id = 'toast-carrito'; 
+      newToast.id = 'toast-exito'; 
       newToast.innerHTML = `
           ${ICON_CHECK || '✅'}
           <div>${product.Name} agregado al carrito</div>`;
