@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 })
 
-function updateCartCount() {
+export function updateCartCount() {
     // 1. Obtener los ítems del carrito (asumiendo que esta lógica es global o se repite)
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     

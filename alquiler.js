@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             await addFormToAirtable(form);
-            toast();
+            toast("¡Reserva enviada con éxito!");
             alquilerForm.reset(); // Limpiar el formulario
         } catch (error) {
             console.error('Error agregando producto:', error);

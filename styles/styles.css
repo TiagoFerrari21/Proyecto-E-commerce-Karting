@@ -789,7 +789,92 @@ footer {
 
 /* Fin Formulario agregar producto */
 
+/*Formulario editar producto*/
 
+.button-editar {
+    background-color: #0566b6;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.button-editar:hover {
+    background-color: #263144;
+    color: white;
+}
+
+.add-product-container {
+    max-width: 500px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+    color: white;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+}
+
+#edit-product-form button {
+    background-color: #b60505;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.add-product-container button:hover {
+    background-color: #d12c2c;
+}
+
+#add-product-form,
+#edit-product-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    min-width: 30%;
+    max-width: 700px;
+    color: white;
+    gap: 10px;
+}
+
+#add-product-form input,
+#edit-product-form input,
+#add-product-form textarea,
+#edit-product-form textarea {
+    width: 90%;
+    padding: 10px 15px;
+    font-size: 16px;
+    color: white;
+    background-color: #8886864d;
+    border: none;
+    border-radius: 15px;
+    font-family: "Ferrari Sans";
+    transition: all 0.3s ease;
+}
+
+#add-product-form input:focus,
+#edit-product-form input:focus,
+#add-product-form textarea:focus,
+#edit-product-form textarea:focus {
+    outline: none;
+    border-radius: 15px;
+    box-shadow: 0 0 8px #442626;
+}
 
 
 /* Media Queries */
@@ -800,6 +885,23 @@ footer {
         box-shadow: 0 2px 16px #0002;
         max-height: 70vh;
         max-width: 100%;
+    }
+
+    #add-product-form,
+    #edit-product-form {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1000;
+        background: rgba(0, 0, 0, 0.9);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        min-width: 70%;
+        max-width: 700px;
+        color: white;
+        gap: 10px;
     }
 
     /* El contenedor superior ahora apilará sus elementos verticalmente */
@@ -844,6 +946,8 @@ footer {
 
 
 @media(max-width: 640px) {
+
+
 
 
     /* main */

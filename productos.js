@@ -1,26 +1,27 @@
-import { AIRTABLE_TOKEN, AIRTABLE_BASE_ID, AIRTABLE_TABLE_NAME } from './env.js'; 
+import { AIRTABLE_TOKEN, AIRTABLE_BASE_ID, AIRTABLE_TABLE_NAME } from './env.js';
 import { ICON_CHECK, ICON_CART } from './icons.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // dom elements
   const productsDomElements = document.querySelector('.products-container');
   const inputSearch = document.getElementById('input-search-products');
-  const categoryLinks = document.querySelectorAll('.category-product-filter');
+  const categoryLinks = document.querySelectorAll('#categorias-dropdown a');
+  const orderLinks = document.querySelectorAll('#ordenar-dropdown a');
 
   function updateCartCount() {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-  const totalItemsCount = cart.reduce((sum, item) => {
-        // Aseguramos que item.quantity sea un número, por si acaso
-        const quantity = Number(item.quantity) || 0; 
-        return Number(sum) + quantity; 
+    const totalItemsCount = cart.reduce((sum, item) => {
+      // Aseguramos que item.quantity sea un número, por si acaso
+      const quantity = Number(item.quantity) || 0;
+      return Number(sum) + quantity;
     }, 0);
 
-  if (totalItemsCount > 0) {
-        const cartCountElement = document.getElementById('cart-count');
-        cartCountElement.innerText = totalItemsCount;
-        cartCountElement.style.display = 'block';
-      }
+    if (totalItemsCount > 0) {
+      const cartCountElement = document.getElementById('cart-count');
+      cartCountElement.innerText = totalItemsCount;
+      cartCountElement.style.display = 'block';
+    }
   }
   // airtable config
   const airtableToken = AIRTABLE_TOKEN;
@@ -38,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderProducts(filterProducts());
   });
 
+
   categoryLinks.forEach(link => {
     link.addEventListener('click', (event) => {
       event.preventDefault();
@@ -46,6 +48,16 @@ document.addEventListener('DOMContentLoaded', () => {
       renderProducts(filterProducts());
     });
   });
+
+  orderLinks.forEach(link => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            const orderType = event.target.innerText.includes('Bajo a Alto') ? 'low-to-high' : 'high-to-low';
+            currentFilters.order = orderType;
+            renderProducts(filterProducts());
+        });
+    });
+
 
   // funciones
   function createProduct(product) {
@@ -87,11 +99,21 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function filterProducts() {
-    return listProducts.filter(product =>
+    let filteredProducts = listProducts.filter(product =>
       product.name.toLowerCase().includes(currentFilters.text) &&
       (currentFilters.category === '' || product.category.toLowerCase() === currentFilters.category)
     );
+
+    if (currentFilters.order === 'low-to-high') {
+      filteredProducts.sort((a, b) => a.price - b.price);
+    } else if (currentFilters.order === 'high-to-low') {
+      filteredProducts.sort((a, b) => b.price - a.price);
+    }
+
+    return filteredProducts;
+
   }
+
 
   function renderProducts(products) {
     productsDomElements.innerHTML = '';
@@ -128,24 +150,24 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCartCount();
 });
 
-function addtoCart(elemento, product){
+function addtoCart(elemento, product) {
 
   elemento.preventDefault();
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
   const existingProductIndex = cart.findIndex(item => item.id === product.id);
 
-  
+
 
   if (existingProductIndex > -1) {
-        // 2. Si existe (índice >= 0), incrementamos la cantidad
-        cart[existingProductIndex].quantity += 1;
-        
-        // El producto en el carrito debe tener la propiedad `quantity` inicializada.
-        // Si no la tiene, debemos asegurarnos de inicializarla en 1 si es la primera vez que se añade.
-    } else {
-        // 3. Si no existe, lo añadimos con cantidad inicial de 1.
-        // Usamos el spread operator ({...product}) para no modificar el objeto original `product`.
-        cart.push({ ...product, quantity: 1 });
+    // 2. Si existe (índice >= 0), incrementamos la cantidad
+    cart[existingProductIndex].quantity += 1;
+
+    // El producto en el carrito debe tener la propiedad `quantity` inicializada.
+    // Si no la tiene, debemos asegurarnos de inicializarla en 1 si es la primera vez que se añade.
+  } else {
+    // 3. Si no existe, lo añadimos con cantidad inicial de 1.
+    // Usamos el spread operator ({...product}) para no modificar el objeto original `product`.
+    cart.push({ ...product, quantity: 1 });
   }
 
   localStorage.setItem('cart', JSON.stringify(cart));
@@ -153,7 +175,7 @@ function addtoCart(elemento, product){
   // 1. Crear el Toast
   const toastContainer = document.getElementById('toast-container');
   const newToast = document.createElement('div');
-  newToast.id = 'toast-exito'; 
+  newToast.id = 'toast-exito';
   newToast.innerHTML = `
       ${ICON_CHECK || '✅'}
       <div>${product.name} agregado al carrito</div>`;
@@ -165,9 +187,9 @@ function addtoCart(elemento, product){
 
   // 4. Ocultar el Toast después de unos segundos y eliminarlo del DOM
   setTimeout(() => {
-      newToast.style.display = 'none';
-      setTimeout(() => {
-          document.toastContainer.removeChild(newToast);
-      }, 3000); 
+    newToast.style.display = 'none';
+    setTimeout(() => {
+      document.toastContainer.removeChild(newToast);
+    }, 3000);
   }, 3000);
 }

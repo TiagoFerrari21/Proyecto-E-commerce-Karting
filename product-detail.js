@@ -1,5 +1,7 @@
-import { AIRTABLE_TOKEN, AIRTABLE_BASE_ID, AIRTABLE_TABLE_NAME } from './env.js'; 
-import { ICON_CHECK, ICON_CART } from './icons.js';
+import { AIRTABLE_TOKEN, AIRTABLE_BASE_ID, AIRTABLE_TABLE_NAME } from './env.js';
+import { ICON_CHECK } from './icons.js';
+import { updateCartCount } from './general.js';
+
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -11,6 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //funciones
 
+    function normalizeProductKeys(product) {
+        const normalizedProduct = {};
+        Object.keys(product).forEach(key => {
+            normalizedProduct[key.toLowerCase()] = product[key];
+        });
+        return normalizedProduct;
+    }
 
     async function fetchProductById(productId) {
         const filterFormula = `(RECORD_ID() = '${productId}')`;
@@ -31,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Devolver solo el objeto 'fields' si se encontró el registro.
         if (productRecord && productRecord.fields) {
-            return productRecord.fields;
+            return { ...productRecord.fields, id: productRecord.id };
         } else {
             throw new Error("Producto no encontrado.");
         }
@@ -40,15 +49,15 @@ document.addEventListener('DOMContentLoaded', () => {
     async function loadProductDetails() {
         const productId = getProductIdFromUrl();
         const container = document.querySelector('.product-detail'); // Contenedor para mensajes de error
-        
+
         if (!productId) {
             if (container) container.innerHTML = '<h2>Error: Producto no especificado.</h2>';
             return;
         }
 
         try {
-            const productData = await fetchProductById(productId); 
-            
+            const productData = await fetchProductById(productId);
+
             renderProduct(productData);
 
         } catch (error) {
@@ -57,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    
+
 
 
 
@@ -73,12 +82,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function getProductIdFromUrl() {
         const params = new URLSearchParams(window.location.search);
-        return params.get('code'); 
+        return params.get('code');
     }
 
-    
-    
+
+
     function renderProduct(product) {
+        console.log('Producto renderizado:', product); // Verifica que el objeto tenga el campo 'id'
 
         const newPageContent = document.querySelector('.page-content');
 
@@ -94,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const newImg = document.createElement('img');
         newImg.src = product.img;
         newImg.className = "product-image";
-        
+
         const newPrecioPagos = document.createElement('div');
         newPrecioPagos.className = "precio-pagos";
         newPrecioPagos.innerHTML = `<h3>${product.Name}</h2> <p class="product-price">$${product.Price}</p>`
@@ -124,58 +134,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
     loadProductDetails();
 
-    function saveCart(cart) {
-        localStorage.setItem('cart', JSON.stringify(cart));
-    }
 
-    // Función para obtener el carrito de localStorage
-    function getCartItemsFromStorage() {
+    function addtoCart(elemento, product) {
+        elemento.preventDefault();
+
+        // Normalizar las claves del producto
+        const normalizedProduct = normalizeProductKeys(product);
+        console.log('Producto normalizado:', normalizedProduct);
+
         const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        return cart;
-    }
+        console.log('Carrito antes de actualizar:', cart);
 
-    function addtoCart(elemento, product){
-    
-      elemento.preventDefault();
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      const existingProductIndex = cart.findIndex(item => item.id === product.id);
-    
-      
-    
-      if (existingProductIndex > -1) {
-            // 2. Si existe (índice >= 0), incrementamos la cantidad
+        const existingProductIndex = cart.findIndex(item => item.id === normalizedProduct.id);
+
+        if (existingProductIndex > -1) {
             cart[existingProductIndex].quantity += 1;
-            
-            // El producto en el carrito debe tener la propiedad `quantity` inicializada.
-            // Si no la tiene, debemos asegurarnos de inicializarla en 1 si es la primera vez que se añade.
         } else {
-            // 3. Si no existe, lo añadimos con cantidad inicial de 1.
-            // Usamos el spread operator ({...product}) para no modificar el objeto original `product`.
-            cart.push({ ...product, quantity: 1 });
-      }
-    
-      localStorage.setItem('cart', JSON.stringify(cart));
-    
-      // 1. Crear el Toast
-      const toastContainer = document.getElementById('toast-container');
-      const newToast = document.createElement('div');
-      newToast.id = 'toast-exito'; 
-      newToast.innerHTML = `
-          ${ICON_CHECK || '✅'}
-          <div>${product.Name} agregado al carrito</div>`;
-    
-      // 2. Añadir el Toast al DOM (lo mejor es al <body> o a un contenedor fijo)
-      toastContainer.appendChild(newToast);
-      newToast.style.display = 'flex';
-    
-    
-      // 4. Ocultar el Toast después de unos segundos y eliminarlo del DOM
-      setTimeout(() => {
-          newToast.style.display = 'none';
-          setTimeout(() => {
-              document.toastContainer.removeChild(newToast);
-          }, 3000); 
-      }, 3000);
+            cart.push({ ...normalizedProduct, quantity: 1 });
+        }
+
+        console.log('Carrito después de actualizar:', cart);
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+        console.log('Carrito guardado en localStorage:', JSON.parse(localStorage.getItem('cart')));
+
+        // Crear el Toast
+        const toastContainer = document.getElementById('toast-container');
+        const newToast = document.createElement('div');
+        newToast.id = 'toast-exito';
+        newToast.innerHTML = `
+        ${ICON_CHECK || '✅'}
+        <div>${normalizedProduct.name} agregado al carrito</div>`;
+
+        toastContainer.appendChild(newToast);
+        newToast.style.display = 'flex';
+
+        setTimeout(() => {
+            newToast.style.display = 'none';
+            setTimeout(() => {
+                toastContainer.removeChild(newToast);
+            }, 3000);
+        }, 3000);
 
     }
 

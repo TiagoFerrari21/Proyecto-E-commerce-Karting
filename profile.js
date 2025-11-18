@@ -24,6 +24,89 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    const cancelEditButton = document.getElementById('cancel-edit-button');
+    cancelEditButton.addEventListener('click', () => {
+        const editForm = document.getElementById('edit-product-form');
+        editForm.classList.add('hidden'); // Oculta el formulario
+        editForm.reset(); // Limpia los campos del formulario
+    });
+
+    async function updateProductInAirtable(productId, updatedProduct) {
+        const airtableUrl = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}/${productId}`;
+
+        try {
+            const response = await fetch(airtableUrl, {
+                method: 'PATCH',
+                headers: {
+                    'Authorization': `Bearer ${AIRTABLE_TOKEN}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    fields: {
+                        Name: updatedProduct.name,
+                        Price: updatedProduct.price,
+                        Category: updatedProduct.category,
+                        img: updatedProduct.img,
+                        Stock: updatedProduct.stock,
+                        detail: updatedProduct.detail
+                    }
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error('Error al actualizar el producto.');
+            }
+
+            const data = await response.json();
+            console.log('Producto actualizado:', data);
+        } catch (error) {
+            console.error('Error en la solicitud PATCH:', error);
+            throw error;
+        }
+    }
+
+    const editForm = document.getElementById('edit-product-form');
+    editForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const productId = editForm.getAttribute('data-product-id'); // Obtener el ID del producto
+        const updatedProduct = {
+            name: document.getElementById('edit-product-name').value,
+            price: parseFloat(document.getElementById('edit-product-price').value),
+            category: document.getElementById('edit-product-category').value,
+            img: document.getElementById('edit-product-img').value,
+            stock: parseInt(document.getElementById('edit-product-stock').value, 10),
+            detail: document.getElementById('edit-product-detail').value
+        };
+
+        try {
+            await updateProductInAirtable(productId, updatedProduct);
+            toast('Producto actualizado exitosamente.');
+            editForm.reset(); // Limpiar el formulario
+            editForm.classList.add('hidden'); // Ocultar el formulario
+            getProductsFromAirtable(); // Actualizar la lista de productos
+        } catch (error) {
+            console.error('Error actualizando producto:', error);
+            toastError('Error al actualizar el producto.');
+        }
+    });
+
+    function openEditForm(product) {
+        const editForm = document.getElementById('edit-product-form');
+        editForm.classList.remove('hidden'); // Mostrar el formulario
+
+        // Precargar los datos del producto en el formulario
+        document.getElementById('edit-product-name').value = product.name;
+        document.getElementById('edit-product-price').value = product.price;
+        document.getElementById('edit-product-category').value = product.category;
+        document.getElementById('edit-product-img').value = product.img;
+        document.getElementById('edit-product-stock').value = product.stock;
+        document.getElementById('edit-product-detail').value = product.detail;
+
+        // Guardar el ID del producto en un atributo del formulario
+        editForm.setAttribute('data-product-id', product.id);
+    }
+
     addProductForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
@@ -153,10 +236,18 @@ document.addEventListener('DOMContentLoaded', () => {
             deleteProductFromAirtable(product.id);
         });
 
+        // Botón para editar
+        const buttonEdit = document.createElement('button');
+        buttonEdit.innerText = "EDITAR";
+        buttonEdit.className = "button-editar";
+        buttonEdit.addEventListener('click', () => {
+            openEditForm(product); // Abre el formulario de edición con los datos del producto
+        });
+
         newDiv.append(newImg, newPName, newPPrice);
         newAnchor.appendChild(newDiv);
         newProduct.appendChild(newAnchor);
-        newProduct.appendChild(buttonAddToCart);
+        newProduct.append(buttonAddToCart, buttonEdit);
         return newProduct;
     }
 
@@ -190,7 +281,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 name: item.fields.Name,
                 price: item.fields.Price,
                 img: item.fields.img,
-                category: item.fields.Category
+                category: item.fields.Category,
+                stock: item.fields.Stock,
+                detail: item.fields.detail
             }));
             renderProducts(listProducts);
         } catch (error) {
