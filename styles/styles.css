@@ -86,6 +86,7 @@ nav {
     background: #442626;
 }
 
+
 /* */
 
 /* Header icons*/
@@ -95,6 +96,10 @@ nav {
     border-radius: 50%;
     border: 0px solid #000;
     text-align: center;
+}
+
+.pfp:hover {
+    box-shadow: #442626;
 }
 
 .pfp img {
@@ -302,6 +307,10 @@ footer {
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+.dropdown .pfp:hover{
+    background: #442626;
 }
 
 /* dropdowns fin */

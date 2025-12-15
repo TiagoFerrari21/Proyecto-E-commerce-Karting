@@ -8,21 +8,26 @@
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 
-<script type="module" src="./profile.js"></script>
+<script type="module" src="./admin.js"></script>
 
 
 <body>
     <header class="nav-header">
         <div class="nav-bounds">
 
-            <a class="link-icon-pfp" href="profile.html">
-                <div class="pfp">
-
-                    <img src="./media/images/nopfp3.png">
-                    <span class="icon-label">Perfil</span>
-
+                <div class="dropdown">
+                    <a class="link-icon-pfp" href ="profile.html">
+                        <div class="pfp">
+                            <img src="./media/images/nopfp3.png">
+                            <span class="icon-label">Perfil</span>
+                        </div>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="admin.html">Admin</a>
+                        <a href="profile.html">Ver Perfil</a>
+                        <a href="logout.html">Cerrar Sesión</a>
+                    </div>
                 </div>
-            </a>
 
             <input type="checkbox" id="burger-toggle" class="burger-toggle">
             <label for="burger-toggle" class="burger-menu"><span></span><span></span><span></span></label>
@@ -56,6 +61,7 @@
 
                 <div class="add-product-container">
                     <button id="toggle-form-button">Agregar Producto</button>
+                    
                     <form id="add-product-form" class="hidden">
                         <label for="product-name">Nombre del producto:</label>
                         <input type="text" id="product-name" name="product-name" required>
@@ -76,6 +82,7 @@
                         <textarea id="product-detail" name="product-detail" required></textarea>
 
                         <button type="submit" id="add-product-button">Agregar Producto</button>
+                        <button type="button"id="cancel-form-button">Cancelar</button>
                     </form>
                 </div>
 

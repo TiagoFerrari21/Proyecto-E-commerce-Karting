@@ -11,17 +11,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const categoryLinks = document.querySelectorAll('.category-product-filter');
     const toggleFormButton = document.getElementById('toggle-form-button');
     const addProductForm = document.getElementById('add-product-form');
+    const cancelFormButton = document.getElementById('cancel-form-button');
 
-    toggleFormButton.addEventListener('click', () => {
-        // Verificar si el formulario está visible
-        if (addProductForm.style.display === 'none' || !addProductForm.style.display) {
-            addProductForm.style.display = 'flex'; // Mostrar el formulario
-            addProductForm.style.flexDirection = 'column'; // Asegurar que sea columna
-            toggleFormButton.innerText = 'Cerrar Formulario';
-        } else {
-            addProductForm.style.display = 'none'; // Ocultar el formulario
-            toggleFormButton.innerText = 'Agregar Producto';
-        }
+
+   toggleFormButton.addEventListener('click', () => {
+        // Mostrar el formulario y el botón "Cerrar Formulario"
+        addProductForm.style.display = 'flex';
+        addProductForm.style.flexDirection = 'column';
+        cancelFormButton.classList.remove('hidden');
+    });
+
+    cancelFormButton.addEventListener('click', () => {
+        // Ocultar el formulario y volver a mostrar el botón "Agregar Producto"
+        addProductForm.style.display = 'none';
+        toggleFormButton.classList.remove('hidden');
+        cancelFormButton.classList.add('hidden');
     });
 
     const cancelEditButton = document.getElementById('cancel-edit-button');
