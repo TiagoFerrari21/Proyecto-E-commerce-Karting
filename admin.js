@@ -6,6 +6,15 @@ import { toast, toastError } from './general.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // airtable config
+    const airtableToken = AIRTABLE_TOKEN;
+    const baseId = AIRTABLE_BASE_ID;
+    const tableName = AIRTABLE_TABLE_NAME;
+    const airtableUrl = `https://api.airtable.com/v0/${baseId}/${tableName}`;
+
+    let listProducts = [];
+    const currentFilters = { text: '', category: '' };
+
     const productsDomElements = document.querySelector('.products-container');
     const inputSearch = document.getElementById('input-search-products');
     const categoryLinks = document.querySelectorAll('.category-product-filter');
@@ -13,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const addProductForm = document.getElementById('add-product-form');
     const cancelFormButton = document.getElementById('cancel-form-button');
 
+    // Manejo de formularios
 
    toggleFormButton.addEventListener('click', () => {
         // Mostrar el formulario y el botón "Cerrar Formulario"
@@ -34,40 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
         editForm.classList.add('hidden'); // Oculta el formulario
         editForm.reset(); // Limpia los campos del formulario
     });
-
-    async function updateProductInAirtable(productId, updatedProduct) {
-        const airtableUrl = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}/${productId}`;
-
-        try {
-            const response = await fetch(airtableUrl, {
-                method: 'PATCH',
-                headers: {
-                    'Authorization': `Bearer ${AIRTABLE_TOKEN}`,
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    fields: {
-                        Name: updatedProduct.name,
-                        Price: updatedProduct.price,
-                        Category: updatedProduct.category,
-                        img: updatedProduct.img,
-                        Stock: updatedProduct.stock,
-                        detail: updatedProduct.detail
-                    }
-                })
-            });
-
-            if (!response.ok) {
-                throw new Error('Error al actualizar el producto.');
-            }
-
-            const data = await response.json();
-            console.log('Producto actualizado:', data);
-        } catch (error) {
-            console.error('Error en la solicitud PATCH:', error);
-            throw error;
-        }
-    }
 
     const editForm = document.getElementById('edit-product-form');
     editForm.addEventListener('submit', async (e) => {
@@ -135,6 +111,45 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    //fin manejo de formularios
+
+    // Funciones para interactuar con Airtable
+
+    async function updateProductInAirtable(productId, updatedProduct) {
+        const airtableUrl = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}/${productId}`;
+
+        try {
+            const response = await fetch(airtableUrl, {
+                method: 'PATCH',
+                headers: {
+                    'Authorization': `Bearer ${AIRTABLE_TOKEN}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    fields: {
+                        Name: updatedProduct.name,
+                        Price: updatedProduct.price,
+                        Category: updatedProduct.category,
+                        img: updatedProduct.img,
+                        Stock: updatedProduct.stock,
+                        detail: updatedProduct.detail
+                    }
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error('Error al actualizar el producto.');
+            }
+
+            const data = await response.json();
+            console.log('Producto actualizado:', data);
+        } catch (error) {
+            console.error('Error en la solicitud PATCH:', error);
+            throw error;
+        }
+    }
+
+
     async function addProductToAirtable(product) {
         const airtableUrl = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}`;
 
@@ -170,6 +185,64 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // obtener productos de Airtable
+    async function getProductsFromAirtable() {
+        try {
+            const response = await fetch(airtableUrl, {
+                headers: {
+                    'Authorization': `Bearer ${airtableToken}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+            const data = await response.json();
+            console.log('Airtable data:', data);
+            listProducts = data.records.map(item => ({
+                id: item.id,
+                name: item.fields.Name,
+                price: item.fields.Price,
+                img: item.fields.img,
+                category: item.fields.Category,
+                stock: item.fields.Stock,
+                detail: item.fields.detail
+            }));
+            renderProducts(listProducts);
+        } catch (error) {
+            console.error('Error fetching products from Airtable:', error);
+        }
+    }
+
+    async function deleteProductFromAirtable(productId) {
+        const airtableToken = AIRTABLE_TOKEN;
+        const baseId = AIRTABLE_BASE_ID;
+        const tableName = AIRTABLE_TABLE_NAME;
+        const airtableUrl = `https://api.airtable.com/v0/${baseId}/${tableName}`;
+
+        try {
+            const response = await fetch(`${airtableUrl}?records[]=${productId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${airtableToken}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                console.log('Producto eliminado:', productId);
+                toastError('Producto eliminado exitosamente.');
+                // Actualiza la lista de productos después de eliminar
+                getProductsFromAirtable();
+            } else {
+                console.error('Error eliminando producto:', await response.json());
+            }
+        } catch (error) {
+            console.error('Error en la solicitud DELETE:', error);
+        }
+    }
+
+    // fin funciones Airtable
+
+    // Función para actualizar el contador del carrito
+
     function updateCartCount() {
         const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
@@ -186,31 +259,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // airtable config
-    const airtableToken = AIRTABLE_TOKEN;
-    const baseId = AIRTABLE_BASE_ID;
-    const tableName = AIRTABLE_TABLE_NAME;
-    const airtableUrl = `https://api.airtable.com/v0/${baseId}/${tableName}`;
-
-    let listProducts = [];
-    const currentFilters = { text: '', category: '' };
-
-    // eventos
+    
+    // buscador
     inputSearch.addEventListener('keyup', (event) => {
         currentFilters.text = event.target.value.toLowerCase();
         renderProducts(filterProducts());
     });
 
-    categoryLinks.forEach(link => {
-        link.addEventListener('click', (event) => {
-            event.preventDefault();
-            const category = event.target.innerText.toLowerCase();
-            currentFilters.category = (currentFilters.category === category) ? '' : category;
-            renderProducts(filterProducts());
-        });
-    });
 
-    // funciones
     function createProduct(product) {
         const newProduct = document.createElement('div');
         newProduct.className = "product-item";
@@ -267,60 +323,6 @@ document.addEventListener('DOMContentLoaded', () => {
         products.forEach(product => {
             productsDomElements.appendChild(createProduct(product));
         });
-    }
-
-    // obtener productos de Airtable
-    async function getProductsFromAirtable() {
-        try {
-            const response = await fetch(airtableUrl, {
-                headers: {
-                    'Authorization': `Bearer ${airtableToken}`,
-                    'Content-Type': 'application/json'
-                }
-            });
-            const data = await response.json();
-            console.log('Airtable data:', data);
-            listProducts = data.records.map(item => ({
-                id: item.id,
-                name: item.fields.Name,
-                price: item.fields.Price,
-                img: item.fields.img,
-                category: item.fields.Category,
-                stock: item.fields.Stock,
-                detail: item.fields.detail
-            }));
-            renderProducts(listProducts);
-        } catch (error) {
-            console.error('Error fetching products from Airtable:', error);
-        }
-    }
-
-    async function deleteProductFromAirtable(productId) {
-        const airtableToken = AIRTABLE_TOKEN;
-        const baseId = AIRTABLE_BASE_ID;
-        const tableName = AIRTABLE_TABLE_NAME;
-        const airtableUrl = `https://api.airtable.com/v0/${baseId}/${tableName}`;
-
-        try {
-            const response = await fetch(`${airtableUrl}?records[]=${productId}`, {
-                method: 'DELETE',
-                headers: {
-                    'Authorization': `Bearer ${airtableToken}`,
-                    'Content-Type': 'application/json'
-                }
-            });
-
-            if (response.ok) {
-                console.log('Producto eliminado:', productId);
-                toastError('Producto eliminado exitosamente.');
-                // Actualiza la lista de productos después de eliminar
-                getProductsFromAirtable();
-            } else {
-                console.error('Error eliminando producto:', await response.json());
-            }
-        } catch (error) {
-            console.error('Error en la solicitud DELETE:', error);
-        }
     }
 
     getProductsFromAirtable();

@@ -90,6 +90,12 @@ nav {
 /* */
 
 /* Header icons*/
+
+.dropdown-pfp-mobile {
+    display:none;
+}
+
+
 .pfp {
     width: 60px;
     height: 60px;
@@ -313,7 +319,24 @@ footer {
     background: #442626;
 }
 
+/* dropdown pfp*/
+
+.dropdown-pfp {
+    border-radius: 15px;
+}
+
+
+.dropdown-pfp:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-pfp .pfp:hover{
+    background: #442626;
+}
+
 /* dropdowns fin */
+
+
 
 
 /* search bar */
@@ -889,6 +912,10 @@ footer {
 /* Media Queries */
 
 @media (max-width: 768px) {
+
+
+    /* Asegurarte de que solo se vea la imagen */
+    
     .product-image {
         border-radius: 8px;
         box-shadow: 0 2px 16px #0002;
@@ -957,6 +984,75 @@ footer {
 @media(max-width: 640px) {
 
 
+    /* dropdown mobile */
+
+
+
+    .nav-bounds a:hover {
+        background: none;
+    }
+
+    .pfp-mobile {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 0px solid #000;
+        text-align: center;
+    }
+
+    .pfp-mobile img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        box-shadow: 0px 0px 6px #000000;
+        border: 0px solid #000;
+    }
+
+    .pfp-mobile:hover {
+        box-shadow: #442626;
+    }
+
+
+    .dropdown-content-mobile {
+        display: none;
+        position: absolute;
+        background-color: #000000a9;
+        min-width: 160px;
+        z-index: 1;
+        border-radius: 15px;
+        padding: 10px;
+        margin-left: 36px;
+        margin-top: -51px;
+    }
+
+    .dropdown-content-mobile a {
+        color: white;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content-mobile a:hover {
+        background-color: #442626;
+        border-radius: 15px;
+    }
+
+    .dropdown-pfp-mobile:hover .dropdown-content-mobile {
+        display: block;
+    }
+
+    .dropdown-mobile .pfp-mobile:hover{
+        background: #442626;
+    }
+
+    .dropdown-pfp-mobile {
+        display:block;
+        margin-top: -17px;
+    }
+
+  
+
+
 
 
     /* main */
@@ -1018,6 +1114,11 @@ footer {
 
     /* Burger Menu Styles */
 
+    .dropdown-pfp {
+    display: none;
+
+    }
+
     .link-icon-pfp {
         display: none;
     }
@@ -1051,11 +1152,9 @@ footer {
         width: 20vh;
         display: flex;
         flex-direction: column;
-        margin-top: 10%;
         justify-content: flex-start;
         background: #000000e6;
         height: 100vh;
-        padding: 32px;
         position: absolute;
         top: 0;
         left: 0;
