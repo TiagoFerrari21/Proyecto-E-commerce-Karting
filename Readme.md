@@ -26,7 +26,7 @@ Antes de ejecutar el proyecto, asegúrate de tener instalado en tu sistema:
 
 ### 1. Clonar el repositorio
 Abre una terminal o consola de comandos y ejecuta:
-```bash
+
 git clone <https://github.com/TiagoFerrari21/Proyecto-E-commerce-Karting>
 
 Navega hacia la carpeta raíz del proyecto:
@@ -42,6 +42,7 @@ Bash
 docker build -t kartodromo .
 
 (Nota: No olvides el espacio y el punto . al final del comando).
+
 3. Ejecución del Contenedor
 
 Para levantar el servidor web y asignarle un puerto accesible, ejecuta:
