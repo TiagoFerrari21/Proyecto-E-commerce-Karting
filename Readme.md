@@ -28,3 +28,28 @@ Antes de ejecutar el proyecto, asegúrate de tener instalado en tu sistema:
 Abre una terminal o consola de comandos y ejecuta:
 ```bash
 git clone <https://github.com/TiagoFerrari21/Proyecto-E-commerce-Karting>
+
+Navega hacia la carpeta raíz del proyecto:
+Bash
+
+cd Proyecto-E-commerce-Karting
+
+2. Construcción de la Imagen Docker
+
+Para compilar los archivos estáticos dentro de la imagen personalizada de Nginx, ejecuta el siguiente comando en la raíz del proyecto (donde se encuentra el archivo Dockerfile):
+Bash
+
+docker build -t kartodromo .
+
+(Nota: No olvides el espacio y el punto . al final del comando).
+3. Ejecución del Contenedor
+
+Para levantar el servidor web y asignarle un puerto accesible, ejecuta:
+Bash
+
+docker run -d -p 8080:80 --name web-kartodromo kartodromo
+
+4. Acceso a la Aplicación
+
+Una vez que el contenedor esté corriendo de fondo, abre tu navegador web preferido (Chrome, Edge, Firefox, etc.) e ingresa a la siguiente dirección:
+👉 http://localhost:8080
